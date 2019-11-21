@@ -6,7 +6,7 @@ const Home = props => {
         <div>
             <Header />
             <div>
-                <h2>Something extremely interesting and awesome about my project</h2>
+                <h2>Something extremely interesting to read!</h2>
             </div>
         </div>
     )
