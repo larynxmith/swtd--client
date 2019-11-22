@@ -22,10 +22,11 @@ const NewItem = (props) => {
     const [open, setOpen] = React.useState(false)
 
     const [values, setValues] = React.useState({
-        listItem: '',
-        lastChanged: new Date(),
-        nextChanged: new Date(),
-        itemDetails: '',
+        question: '',
+        correctAnswer: '',
+        incorrectAnswer1: '',
+        incorrectAnswer2: '',
+        incorrectAnswer3: '',
         userId: props.user._id
     });
 
@@ -42,13 +43,13 @@ const NewItem = (props) => {
         setOpen(false)
         let token = localStorage.getItem('mernToken')
         console.log('values: ', values)
-        axios.post(`${BASE_URL}/listItems`,
+        axios.post(`${BASE_URL}/questions`,
             {
-                listItem: values.listItem,
-                lastChanged: values.lastChanged,
-                nextChanged: values.nextChanged,
-                itemDetails: values.itemDetails,
-                userId: values.userId
+                question: values.question,
+                correctAnswer: values.correctAnswer,
+                incorrectAnswer1: values.incorrectAnswer1,
+                incorrectAnswer2: values.incorrectAnswer2,
+                incorrectAnswer3: values.incorrectAnswer3
             },
             {
                 headers: { 'Authorization': `Bearer ${token}` }
@@ -79,10 +80,10 @@ const NewItem = (props) => {
     return (
         <div>
             <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-                Add to Your Forgetfills
+                Create a ThrowDown
             </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Add a New Item!</DialogTitle>
+                <DialogTitle id="form-dialog-title">Add a Question!</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
                         Fill out the Fields Below:
@@ -91,54 +92,53 @@ const NewItem = (props) => {
                         autoFocus
                         margin="dense"
                         id="listItem"
-                        label="What Would You Like to Forget?"
+                        label="What's the Question?"
                         type="text"
                         fullWidth
                         value={values.listItem}
                         onChange={e => handleChange('listItem', e)}
                     />
-                    <MuiPickersUtilsProvider utils={MomentUtils}>
-                        <KeyboardDatePicker
-                            margin="dense"
-                            id="lastChanged"
-                            name='lastChanged'
-                            label="Date Last Changed"
-                            format="MM/DD/YYYY"
-                            value={values.lastChanged}
-                            onChange={(e, x) => handleChange('lastChanged', e, x)}
-                            KeyboardButtonProps={{
-                                'aria-label': 'change date',
-                            }}
-                        />
-                        <span>    </span>
-                        <KeyboardDatePicker
-                            margin="dense"
-                            id="nextChanged"
-                            label="Next Change Date"
-                            format="MM/DD/YYYY"
-                            value={values.nextChanged}
-                            onChange={(e, x) => handleChange('nextChanged', e, x)}
-                            KeyboardButtonProps={{
-                                'aria-label': 'change date',
-                            }}
-                        />
-                    </MuiPickersUtilsProvider>
                     <TextField
                         margin="dense"
-                        id="itemDetails"
-                        label="Got Some Particulars You're Never Gonna Remember Anyway?"
+                        id="listItem"
+                        label="Enter the CORRECT Answer"
                         type="text"
                         fullWidth
-                        onChange={e => handleChange('itemDetails', e)}
-                        value={values.itemDetails}
+                        value={values.listItem}
+                        onChange={e => handleChange('listItem', e)}
+                    /><TextField
+                        margin="dense"
+                        id="listItem"
+                        label="Enter an Incorrect Answer"
+                        type="text"
+                        fullWidth
+                        value={values.listItem}
+                        onChange={e => handleChange('listItem', e)}
+                    /><TextField
+                        margin="dense"
+                        id="listItem"
+                        label="Enter Another Incorrect Answer"
+                        type="text"
+                        fullWidth
+                        value={values.listItem}
+                        onChange={e => handleChange('listItem', e)}
+                    /><TextField
+                        margin="dense"
+                        id="listItem"
+                        label="Enter a Third Incorrect Answer"
+                        type="text"
+                        fullWidth
+                        value={values.listItem}
+                        onChange={e => handleChange('listItem', e)}
                     />
+                    
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">
                         Cancel
           </Button>
                     <Button onClick={handleSubmit} color="primary">
-                        Add Item
+                        Add ThrowDown
           </Button>
                 </DialogActions>
             </Dialog>
