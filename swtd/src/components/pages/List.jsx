@@ -101,10 +101,10 @@ const List = props => {
 
     // }
     const fillQuestions = questions => {
-        setQuestions(questions.filter(question => (question.attempted==='false')))
+        setQuestions(questions.filter(question => (question.attempted===false)))
         console.log('filtered questions:', questions)
-        setCorrect(questions.filter(question => (question.correctAnswer==="true")))
-        setIncorrect(questions.filter(question => (question.attempted==="true" && question.correctAnswer==="false")))
+        setCorrect(questions.filter(question => (question.correctAnswer===true)))
+        setIncorrect(questions.filter(question => (question.attempted===true && question.correctAnswer===false)))
     }
 
 

@@ -64,6 +64,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const ListPopulator = props => {
+    console.log('passed questions: ', props.questions)
     const classes = useStyles();
     const [value, setValue] = React.useState('female');
 
