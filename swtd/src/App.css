@@ -39,7 +39,7 @@ nav li {
 nav a, nav a:visited {
     text-decoration: none;
     font-size: 22px;
-    color: mediumspringgreen
+    color: #ffd54e
 }
 
 nav a:hover {

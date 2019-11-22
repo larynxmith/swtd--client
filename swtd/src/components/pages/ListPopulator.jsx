@@ -15,6 +15,13 @@ import ItemSettings from './ItemSettings';
 import UpdateItem from './UpdateItem';
 import DeleteItem from './DeleteItem';
 
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+
 const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',
@@ -51,15 +58,22 @@ const useStyles = makeStyles(theme => ({
             textDecoration: 'underline',
         },
     },
+    formControl: {
+        margin: theme.spacing(3),
+    }
 }));
 
 const ListPopulator = props => {
     const classes = useStyles();
+    const [value, setValue] = React.useState('female');
 
+    const handleChange = event => {
+        setValue(event.target.value);
+    };
 
     return (
         <div>
-            {props.items.map((item, i) => {
+            {props.questions.map((question, i) => {
                 return (
                     <div key={i}>
                         <div>
@@ -71,33 +85,59 @@ const ListPopulator = props => {
                                         id="panel1c-header"
                                     >
                                         <div className={classes.column}>
-                                            <Typography className={classes.heading}>Forget-fill: {item.listItem}</Typography>
+                                            <Typography className={classes.heading}>Question: {question.question}</Typography>
                                         </div>
                                         <div className={classes.column}>
-                                            <Typography className={classes.secondaryHeading}>Next Change: <Moment fromNow unit="days">{item.nextChanged}</Moment></Typography>
+                                            {/* <Typography className={classes.secondaryHeading}>Posted: <Moment fromNow unit="days">{item.nextChanged}</Moment></Typography> */}
                                         </div>
                                     </ExpansionPanelSummary>
 
                                     <ExpansionPanelDetails className={classes.details}>
-                                        <div className={classes.column} >
-                                            Details: {item.itemDetails}
-                                            <DeleteItem item={item} getItems={props.getItems} user={props.user} />
-                                        </div>
-
-                                        <div className={clsx(classes.column, classes.helper)}>
-                                            Last Change: <Moment fromNow unit="days">{item.lastChanged}</Moment>
-                                            {item.listItem}
-                                            <UpdateItem item={item} getItems={props.getItems} user={props.user} />
-                                        </div>
-                                        <div className={clsx(classes.column, classes.helper)}>
-                                            <Typography variant="caption">
-                                                Need to Order?
-                                                <br />
-                                                <a href={"https://www.amazon.com/s?k=" + item.listItem} className={classes.link}>
-                                                    Check it out on Amazon
-                                                </a>
-                                            </Typography>
-                                        </div>
+                                        <FormControl component="fieldset" className={classes.formControl}>
+                                            <FormLabel component="legend">Gender</FormLabel>
+                                            <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
+                                                <FormControlLabel value="female" control={<Radio />} label="Female" />
+                                                <FormControlLabel value="male" control={<Radio />} label="Male" />
+                                                <FormControlLabel value="other" control={<Radio />} label="Other" />
+                                                <FormControlLabel
+                                                    value="disabled"
+                                                    disabled
+                                                    control={<Radio />}
+                                                    label="(Disabled option)"
+                                                />
+                                            </RadioGroup>
+                                        </FormControl>
+                                        <FormControl component="fieldset" className={classes.formControl}>
+                                            <FormLabel component="legend">Gender</FormLabel>
+                                            <RadioGroup aria-label="gender" name="gender2" value={value} onChange={handleChange}>
+                                                <FormControlLabel
+                                                    value="female"
+                                                    control={<Radio color="primary" />}
+                                                    label="Female"
+                                                    labelPlacement="start"
+                                                />
+                                                <FormControlLabel
+                                                    value="male"
+                                                    control={<Radio color="primary" />}
+                                                    label="Male"
+                                                    labelPlacement="start"
+                                                />
+                                                <FormControlLabel
+                                                    value="other"
+                                                    control={<Radio color="primary" />}
+                                                    label="Other"
+                                                    labelPlacement="start"
+                                                />
+                                                <FormControlLabel
+                                                    value="disabled"
+                                                    disabled
+                                                    control={<Radio />}
+                                                    label="(Disabled option)"
+                                                    labelPlacement="start"
+                                                />
+                                            </RadioGroup>
+                                            <FormHelperText>labelPlacement start</FormHelperText>
+                                        </FormControl>
                                     </ExpansionPanelDetails>
                                     <Divider />
                                     <ExpansionPanelActions>
