@@ -10,6 +10,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DeleteTwoToneIcon from '@material-ui/icons/DeleteTwoTone';
 
+
 const DeleteUser = (props) => {
 
     const [open, setOpen] = React.useState(false)
@@ -59,7 +60,7 @@ const DeleteUser = (props) => {
         return (
             <div>
                 <Button color="primary" onClick={handleClickOpen}>
-                    <DeleteTwoToneIcon />
+                    <DeleteTwoToneIcon color="yellow"/>
                 </Button>
                 <Dialog
                     open={open}

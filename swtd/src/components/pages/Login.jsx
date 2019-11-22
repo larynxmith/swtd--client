@@ -33,7 +33,7 @@ class Login extends React.Component {
             return <Redirect to="/profile" />
         }
         return (
-            <div>
+            <div className="Inputs">
                 <h2>Login</h2>
                 <span className="red">{this.state.message}</span>
                 <form onSubmit={this.handleSubmit}>

@@ -9,6 +9,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import yellow from '@material-ui/core/colors/yellow'
 
 import MomentUtils from '@date-io/moment'
 import {
@@ -16,7 +17,7 @@ import {
     KeyboardDatePicker
 } from '@material-ui/pickers'
 
-
+const primary = yellow['#ffd54e']
 const NewItem = (props) => {
 
     const [open, setOpen] = React.useState(false)
@@ -79,11 +80,11 @@ const NewItem = (props) => {
 
     return (
         <div>
-            <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-                Create a ThrowDown
+            <Button variant="contained" color="primary" onClick={handleClickOpen}>
+                Make a ThrowDown
             </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Add a Question!</DialogTitle>
+                <DialogTitle id="form-dialog-title">Please Add a Question!</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
                         Fill out the Fields Below:
@@ -106,10 +107,14 @@ const NewItem = (props) => {
                         fullWidth
                         value={values.correctAnswer}
                         onChange={e => handleChange('correctAnswer', e)}
-                    /><TextField
+                    />
+                    <hr />
+                    <DialogContentText>
+                        Enter Three Incorrect Answers:
+                    </DialogContentText><TextField
                         margin="dense"
                         id="incorrectAnswer1"
-                        label="Enter an Incorrect Answer"
+                        label="#1"
                         type="text"
                         fullWidth
                         value={values.incorrectAnswer1}
@@ -117,7 +122,7 @@ const NewItem = (props) => {
                     /><TextField
                         margin="dense"
                         id="incorrectAnswer2"
-                        label="Enter Another Incorrect Answer"
+                        label="#2"
                         type="text"
                         fullWidth
                         value={values.incorrectAnswer2}
@@ -125,7 +130,7 @@ const NewItem = (props) => {
                     /><TextField
                         margin="dense"
                         id="incorrectAnswer3"
-                        label="Enter a Third Incorrect Answer"
+                        label="#3"
                         type="text"
                         fullWidth
                         value={values.incorrectAnswer3}

@@ -13,6 +13,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import CheckIcon from '@material-ui/icons/Check';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -46,7 +47,7 @@ function a11yProps(index) {
 
 const useStyles = makeStyles(theme => ({
     root: {
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: 'lightgray',
         width: '100vw',
     },
 }));
@@ -118,14 +119,15 @@ const List = props => {
                     <Tabs
                         value={value}
                         onChange={handleChange}
+                        backgroundColor="blue"
                         indicatorColor="primary"
                         textColor="primary"
                         variant="fullWidth"
                         aria-label="full width tabs example"
                     >
                         <Tab label={`Questions(${questions.length})`} {...a11yProps(0)} />
-                        <Tab label={`Correctly Answered(${correct.length})`} {...a11yProps(1)} />
-                        <Tab label={`Incorrectly Answered(${incorrect.length})`} {...a11yProps(2)} />
+                        <Tab label={`✅Correctly Answered(${correct.length})`} {...a11yProps(1)}><CheckIcon /></Tab>
+                        <Tab label={`🚫Incorrectly Answered(${incorrect.length})`} {...a11yProps(2)} />
                         {/* <Tab label={`Dude, Fuhgeddaboudit...(${farBucket.length})`} {...a11yProps(3)} /> */} */}
                     </Tabs>
                 </AppBar>

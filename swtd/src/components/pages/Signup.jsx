@@ -38,7 +38,7 @@ storeInput = (e) => {
             return <Redirect to="/profile" />
         }
         return (
-            <div>
+            <div className="Inputs">
                 <h2>Signup</h2>
                 <span className="red">{this.state.message}</span>
 

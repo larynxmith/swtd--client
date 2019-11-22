@@ -64,12 +64,19 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const ListPopulator = props => {
-    console.log('passed questions: ', props.questions)
+    console.log('updating correct answer : ', props.questions)
     const classes = useStyles();
     const [value, setValue] = React.useState('female');
 
     const handleChange = event => {
-        setValue(event.target.value);
+
+        setValue(event.target.value)
+        console.log('value:', value)
+        if(value===props.questions.correctAnswer){
+            console.log("correctAnswer: ", props.questions.correctAnswer)
+            props.questions.attempted = true
+            props.quesitons.correctAttempt = true
+        }
     };
 
     return (
@@ -95,50 +102,16 @@ const ListPopulator = props => {
 
                                     <ExpansionPanelDetails className={classes.details}>
                                         <FormControl component="fieldset" className={classes.formControl}>
-                                            <FormLabel component="legend">Gender</FormLabel>
+                                            <FormLabel component="legend">Answers</FormLabel>
                                             <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
-                                                <FormControlLabel value="female" control={<Radio />} label="Female" />
-                                                <FormControlLabel value="male" control={<Radio />} label="Male" />
-                                                <FormControlLabel value="other" control={<Radio />} label="Other" />
-                                                <FormControlLabel
-                                                    value="disabled"
-                                                    disabled
-                                                    control={<Radio />}
-                                                    label="(Disabled option)"
-                                                />
+                                                <FormControlLabel value={props.questions[i].correctAnswer} control={<Radio />} label={props.questions[i].correctAnswer} />
+                                                <FormControlLabel value={props.questions[i].incorrectAnswer1} control={<Radio />} label={props.questions[i].incorrectAnswer1} />
+                                                <FormControlLabel value={props.questions[i].incorrectAnswer2} control={<Radio />} label={props.questions[i].incorrectAnswer2} />
+                                                <FormControlLabel value={props.questions[i].incorrectAnswer3} control={<Radio />} label={props.questions[i].incorrectAnswer3} />
+                                                
                                             </RadioGroup>
                                         </FormControl>
-                                        <FormControl component="fieldset" className={classes.formControl}>
-                                            <FormLabel component="legend">Gender</FormLabel>
-                                            <RadioGroup aria-label="gender" name="gender2" value={value} onChange={handleChange}>
-                                                <FormControlLabel
-                                                    value="female"
-                                                    control={<Radio color="primary" />}
-                                                    label="Female"
-                                                    labelPlacement="start"
-                                                />
-                                                <FormControlLabel
-                                                    value="male"
-                                                    control={<Radio color="primary" />}
-                                                    label="Male"
-                                                    labelPlacement="start"
-                                                />
-                                                <FormControlLabel
-                                                    value="other"
-                                                    control={<Radio color="primary" />}
-                                                    label="Other"
-                                                    labelPlacement="start"
-                                                />
-                                                <FormControlLabel
-                                                    value="disabled"
-                                                    disabled
-                                                    control={<Radio />}
-                                                    label="(Disabled option)"
-                                                    labelPlacement="start"
-                                                />
-                                            </RadioGroup>
-                                            <FormHelperText>labelPlacement start</FormHelperText>
-                                        </FormControl>
+                                        
                                     </ExpansionPanelDetails>
                                     <Divider />
                                     <ExpansionPanelActions>

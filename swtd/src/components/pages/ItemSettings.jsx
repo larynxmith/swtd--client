@@ -11,7 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import UpdateItem from './UpdateItem';
 
-const options = ['Update Item Details', 'Delete Item', 'Hack the NSA Database'];
+const options = ['Submit Answer', 'Delete Item', 'Hack the NSA Database'];
 
 export default function ItemSettings() {
     const [open, setOpen] = React.useState(false);
