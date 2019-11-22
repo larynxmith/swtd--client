@@ -91,45 +91,45 @@ const NewItem = (props) => {
                     <TextField
                         autoFocus
                         margin="dense"
-                        id="listItem"
+                        id="question"
                         label="What's the Question?"
                         type="text"
                         fullWidth
-                        value={values.listItem}
-                        onChange={e => handleChange('listItem', e)}
+                        value={values.question}
+                        onChange={e => handleChange('question', e)}
                     />
                     <TextField
                         margin="dense"
-                        id="listItem"
+                        id="correctAnswer"
                         label="Enter the CORRECT Answer"
                         type="text"
                         fullWidth
-                        value={values.listItem}
-                        onChange={e => handleChange('listItem', e)}
+                        value={values.correctAnswer}
+                        onChange={e => handleChange('correctAnswer', e)}
                     /><TextField
                         margin="dense"
-                        id="listItem"
+                        id="incorrectAnswer1"
                         label="Enter an Incorrect Answer"
                         type="text"
                         fullWidth
-                        value={values.listItem}
-                        onChange={e => handleChange('listItem', e)}
+                        value={values.incorrectAnswer1}
+                        onChange={e => handleChange('incorrectAnswer1', e)}
                     /><TextField
                         margin="dense"
-                        id="listItem"
+                        id="incorrectAnswer2"
                         label="Enter Another Incorrect Answer"
                         type="text"
                         fullWidth
-                        value={values.listItem}
-                        onChange={e => handleChange('listItem', e)}
+                        value={values.incorrectAnswer2}
+                        onChange={e => handleChange('incorrectAnswer2', e)}
                     /><TextField
                         margin="dense"
-                        id="listItem"
+                        id="incorrectAnswer3"
                         label="Enter a Third Incorrect Answer"
                         type="text"
                         fullWidth
-                        value={values.listItem}
-                        onChange={e => handleChange('listItem', e)}
+                        value={values.incorrectAnswer3}
+                        onChange={e => handleChange('incorrectAnswer3', e)}
                     />
                     
                 </DialogContent>
